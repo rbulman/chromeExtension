@@ -3,9 +3,19 @@
     "name": "Spider Blocker",
     "description": "Blocks pictures of spiders",
     "version": "1.0",
-    "page_action": {
-        "default_icon": "icon.png",
-        "default_title": "Spider Blocker",
-        "default_popup": "popup.html"
-    }
+    "background": {
+        "scripts": ["eventPage.js"],
+        "persistent": true
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["spiderContentScript.js", "jquery-3.3.1.js"],
+            "css": ["spiderContentScript.css"]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ]
 }
